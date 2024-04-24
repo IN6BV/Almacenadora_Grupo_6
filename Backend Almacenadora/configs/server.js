@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import userRoutes from '../src/users/user.routes.js'
 import authRoutes from '../src/auth/auth.routes.js'
+import taskRoutes from '../src/taskList/taskList.routes.js'
 
 class Server {
     constructor() {
@@ -14,6 +15,7 @@ class Server {
         this.port = process.env.PORT
         this.userPath = '/almtesoro/v1/user'
         this.authPath = '/almtesoro/v1/auth'
+        this.taskPath = '/almtesoro/v1/task'
 
         this.middlewares()
         this.routes()
@@ -35,6 +37,7 @@ class Server {
     routes() {
         this.app.use(this.userPath, userRoutes)
         this.app.use(this.authPath, authRoutes)
+        this.app.use(this.taskPath, taskRoutes)
     }
 
     listen() {
